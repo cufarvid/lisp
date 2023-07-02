@@ -4,5 +4,14 @@
   "description": "",
   "keywords": [],
   "author": "Vid Čufar",
-  "license": "ISC"
+  "license": "MIT",
+  "dependencies": {
+    "ohm-js": "^17.1.0"
+  },
+  "devDependencies": {
+    "@ohm-js/cli": "^2.0.0",
+    "@types/node": "^20.3.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
 }
