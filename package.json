@@ -7,7 +7,9 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier --write \"**/*.{ts,tsx,html,scss,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,html,scss,json,md}\""
+    "format:check": "prettier --check \"**/*.{ts,tsx,html,scss,json,md}\"",
+    "generate": "ohm generateBundles --withTypes 'src/lisp.ohm'",
+    "test": "pnpm generate && node -r ts-node/register src/lisp.test.ts"
   },
   "dependencies": {
     "ohm-js": "^17.1.0"
@@ -17,11 +19,13 @@
     "@types/node": "^20.3.3",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
+    "ava": "^5.3.1",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.8",
     "ts-node": "^10.9.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "uvu": "^0.5.6"
   }
 }

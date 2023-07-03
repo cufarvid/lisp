@@ -1,0 +1,31 @@
+Lisp {
+  Program = Sexp*
+
+  Sexp = "(" Stmt ")"
+
+  Stmt = quasiquote (arg | argList ) -- quasiquote
+       | quote (arg | argList)       -- quote
+       | def symbol (arg | Sexp)     -- def
+       | fn argList (Sexp | Stmt)    -- fn
+       | macro argList Sexp          -- macro
+       | listOf<(arg | Sexp), " ">   -- list
+
+  def = "def" ~identifierPart
+  quasiquote = "quasiquote" ~identifierPart
+  quote = "quote" ~identifierPart
+  fn = "fn" ~identifierPart
+  macro = "macro" ~identifierPart
+
+  identifierPart = arg
+
+  argList = "(" listOf<(arg | argList), " "> ")"
+  arg = number | string | symbol
+  symbol = (letter | sign | number)+
+  string = "\"" (~"\"" any)* "\""
+  sign = "_" | "+" | "-" | "/" | "*" | ">" | "<" | ">=" | "<=" | "=" | "!" | "?" | "~"
+  number = digit+
+
+  comment = ";" (~eol any)* eol
+  eol = "\n" | "\r"
+  space += comment // extend Ohm built-in space with comment
+}
